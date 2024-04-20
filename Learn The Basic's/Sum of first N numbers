@@ -1,0 +1,10 @@
+long long sumFirstN(long long n) {
+    // Write your code here.
+    int sum =0;
+    if(n>=1){
+        int ans = n + sumFirstN(n-1);
+        sum = sum + ans;
+        return sum;
+    }
+    return 1;
+}
