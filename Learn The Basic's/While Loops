@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+
+int sumEven(int n){
+	int sumeven = 0;
+	while(n!=0){
+	int rem = n%10;
+        if (rem % 2 == 0) {
+          sumeven = sumeven + rem;
+        }
+        n = n / 10;
+        }
+		return sumeven;
+}
+
+int sumOdd(int n){
+	int sumodd = 0;
+	while(n!=0){
+	int rem = n%10;
+        if (rem % 2 != 0) {
+          sumodd = sumodd + rem;
+        }
+        n = n / 10;
+        }
+		return sumodd;
+}
+
+int main() {
+	// Write your code here
+	int n;
+	cin>>n;
+
+	cout<<sumEven(n)<<" "<<sumOdd(n);
+	
+}
