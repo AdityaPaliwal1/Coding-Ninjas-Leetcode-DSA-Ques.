@@ -1,0 +1,16 @@
+vector<long long> factorialNumbers(long long n) {
+    // Write Your Code Here
+    vector<long long>ans;
+    long long fact = 1;
+
+    if(n==0){
+        return  {};
+    }
+   
+        for(int i=1;fact*i<=n;i++){
+            fact = fact*i;
+            ans.push_back(fact);
+        }
+    
+    return ans;
+}
