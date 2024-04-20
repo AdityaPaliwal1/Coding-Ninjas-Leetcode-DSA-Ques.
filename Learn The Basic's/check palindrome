@@ -1,0 +1,40 @@
+//coding ninjas
+int reverse(int n){
+    int rev =0;
+    while(n!=0){
+        int digit = n%10;
+        rev = rev*10 + digit;
+        n = n/10;
+    }
+    return rev;
+}
+
+bool palindrome(int n) {
+  // Write your code here
+  if (reverse(n) == n){
+        return true;
+}
+else{
+    return false;
+}
+}
+
+
+//Leetcode
+
+class Solution {
+public:
+    int reverse(int x) {
+      int rev =0;
+       while(x!=0){
+      int lastdigit = x%10;
+       rev = rev*10 + lastdigit;
+       x =x/10;
+
+    }
+     if(rev>INT_MAX || rev<INT_MIN) return 0;
+    return rev;
+    }
+    
+};
+
