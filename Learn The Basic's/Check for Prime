@@ -1,0 +1,17 @@
+bool isPrime(int n) {
+    if (n == 1) {
+        return false;
+    }
+    if (n == 2) {
+        return true;
+    }
+    
+    int sqr = sqrt(n);
+    for (int i = 2; i <= sqr; i++) { // Loop up to the square root of n, inclusive
+        if (n % i == 0) {
+            return false; // If n is divisible by i, it's not prime
+        }
+    }
+    
+    return true; // If no divisor found, n is prime
+}
