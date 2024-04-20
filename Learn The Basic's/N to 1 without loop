@@ -1,0 +1,21 @@
+#include <algorithm>
+
+vector<int> function(int x) {
+    // Write Your Code Here
+    vector<int> result;
+    if(x==0){
+        return result;
+    }
+    else{
+          result = function(x-1) ;
+         result.push_back(x);
+         return result;
+
+    }
+}
+
+vector<int> printNos(int x){
+    vector<int> ans = function( x);
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
