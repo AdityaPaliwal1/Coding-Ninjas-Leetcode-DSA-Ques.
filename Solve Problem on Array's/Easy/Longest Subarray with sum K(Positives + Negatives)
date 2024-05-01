@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+int getLongestSubarray(vector<int>& a, int k){
+    // Write your code here
+       unordered_map<long long, int> prefixSums; // Map to store prefix sums
+    prefixSums[0] = -1; // Initialize with 0 sum at index -1
+    long long sum = 0;
+    int maxLength = 0;
+    
+    for (int i = 0; i < a.size(); ++i) {
+        sum += a[i]; // Add current element to the running sum
+
+        // Check if prefix sum (sum-k) exists in the map
+        if (prefixSums.find(sum - k) != prefixSums.end()) {
+            // Update maxLength if current length is greater
+            maxLength = max(maxLength, i - prefixSums[sum - k]);
+        }
+
+        // If current prefix sum doesn't exist in map, add it
+        if (prefixSums.find(sum) == prefixSums.end()) {
+            prefixSums[sum] = i;
+        }
+    }
+
+    return maxLength;
+}
