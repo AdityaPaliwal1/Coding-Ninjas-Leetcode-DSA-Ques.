@@ -1,0 +1,26 @@
+   int floor = INT_MIN;
+    int ceil = INT_MAX;
+    bool floorFound = false;
+    bool ceilFound = false;
+
+    for (int i = 0; i < n; i++) {
+        if (arr[i] <= x && arr[i] > floor) {
+            floor = arr[i];
+            floorFound = true;
+        }
+        if (arr[i] >= x && arr[i] < ceil) {
+            ceil = arr[i];
+            ceilFound = true;
+        }
+    }
+
+    if (!floorFound) {
+        floor = -1; // indicates floor doesn't exist
+    }
+
+    if (!ceilFound) {
+        ceil = -1; // indicates ceil doesn't exist
+    }
+
+    return {floor, ceil};
+}
