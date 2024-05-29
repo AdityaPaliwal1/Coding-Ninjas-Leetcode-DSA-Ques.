@@ -1,0 +1,42 @@
+class Solution {
+public:
+    bool search(vector<int>& nums, int target) {
+           int n = nums.size();
+        int low = 0, high = n - 1;
+        
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+
+            // If mid points to the target
+            if (nums[mid] == target) return true;
+
+            // The key part: handle duplicates
+            if (nums[low] == nums[mid] && nums[mid] == nums[high]) {
+                low++;
+                high--;
+            }
+            else if (nums[low] <= nums[mid]) {
+                // If the left part is sorted:
+                if (nums[low] <= target && target <= nums[mid]) {
+                    // Element exists:
+                    high = mid - 1;
+                }
+                else {
+                    // Element does not exist:
+                    low = mid + 1;
+                }
+            }
+            else { // If the right part is sorted:
+                if (nums[mid] <= target && target <= nums[high]) {
+                    // Element exists:
+                    low = mid + 1;
+                }
+                else {
+                    // Element does not exist:
+                    high = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+};
