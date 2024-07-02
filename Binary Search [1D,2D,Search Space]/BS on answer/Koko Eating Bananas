@@ -1,0 +1,42 @@
+class Solution {
+    private:
+    int Findmax(vector<int> &piles) {
+    int maxi = INT_MIN;
+    int n = piles.size();
+    //find the maximum:
+    for (int i = 0; i < n; i++) {
+        maxi = max(maxi, piles[i]);
+    }
+    return maxi;
+}
+
+int calculatehours(vector<int> &piles, int hourly) {
+    long long totalH = 0;
+    int n = piles.size();
+    //find total hours:
+    for (int i = 0; i < n; i++) {
+        totalH += ceil((double)(piles[i]) / (double)(hourly));
+    }
+    return totalH;
+}
+
+public:
+    int minEatingSpeed(vector<int>& piles, int h) {
+        int low = 1;
+        int high = Findmax(piles);
+
+        while(low <= high){
+            int mid = (low + high) / 2;
+            long long totalH = calculatehours(piles ,  mid);
+
+            if(totalH <= h){
+                high = mid - 1;
+            }
+            else {
+                low = mid +1 ;
+            }
+
+        }
+        return low ;
+    }
+};
